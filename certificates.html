@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates — Utkarsh Sinha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Minimal lightbox styles to match theme */
+    .lightbox{
+      position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+      background: rgba(5,8,12,0.85); z-index:200; padding:24px;
+    }
+    .lightbox-inner{ max-width: 1000px; width:100%; text-align:center; }
+    .lightbox-inner img{ max-width:100%; height:auto; border-radius:8px; border:1px solid var(--border); }
+    .lightbox-actions{ display:flex; gap:12px; justify-content:center; margin-top:12px; }
+    .cert-thumb{ width:100%; height:220px; object-fit:cover; border-radius:6px; border:1px solid var(--border); }
+    .cert-card{ padding:12px; }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay"></div>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">~/<span class="accent">utkarsh</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about" class="nav-link">about</a>
+        <a href="index.html#experience" class="nav-link">experience</a>
+        <a href="index.html#skills" class="nav-link">skills</a>
+        <a href="index.html#projects" class="nav-link">projects</a>
+        <a href="index.html#education" class="nav-link">education</a>
+        <a href="index.html#contact" class="nav-link">contact</a>
+        <a href="certificates.html" class="nav-link active">view certificates</a>
+        <a href="assets/UTKARSH_SINHA_18Years_Automation_AI_Expert.pdf" class="nav-link">get resume</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="section-inner">
+      <p class="section-kicker">Certificates</p>
+      <h2 class="section-title">Professional Certifications</h2>
+
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-card-inner">
+            <img src="assets/certfificates/UTKARSH_SINHA_certificate20260210-453-tej3xh.jpg" alt="Certificate 1" class="cert-thumb" loading="lazy">
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-inner">
+            <img src="assets/certfificates/SA RPA.png" alt="Certificate 2" class="cert-thumb" loading="lazy">
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-inner">
+            <img src="assets/certfificates/BA RPA.png" alt="Certificate 3" class="cert-thumb" loading="lazy">
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-inner">
+            <img src="assets/certfificates/DEV RPA.png" alt="Certificate 4" class="cert-thumb" loading="lazy">
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-inner">
+            <img src="assets/certfificates/csm.png" alt="CSM Certificate" class="cert-thumb" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Utkarsh Sinha.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" style="display:none">
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="Certificate">
+      <div class="lightbox-actions">
+        <a id="lightboxDownload" class="btn btn-primary" href="#" download>download</a>
+        <button id="lightboxClose" class="btn btn-outline">close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
