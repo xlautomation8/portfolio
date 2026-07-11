@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Create a timestamped folder for each test execution under tests/output
+const runTimestamp = new Date().toISOString().replace(/[:.]/g, '-');
+const runOutputRoot = `tests/output/${runTimestamp}`;
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -7,8 +11,8 @@ export default defineConfig({
   testDir: './tests',
   /* Run tests in files that end with .spec.ts */
   testMatch: '**/*.spec.ts',
-  /* Consolidate all test artifacts in one folder */
-  outputDir: 'tests/test-results',
+  /* Consolidate all test artifacts in one folder (timestamped per run) */
+  outputDir: `${runOutputRoot}/test-results`,
   
   /* Run tests in parallel */
   fullyParallel: true,
@@ -24,9 +28,9 @@ export default defineConfig({
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html', { outputFolder: 'tests/output/playwright-report' }],
-    ['json', { outputFile: 'tests/output/playwright-results.json' }],
-    ['junit', { outputFile: 'tests/output/junit-results.xml' }],
+    ['html', { outputFolder: `${runOutputRoot}/playwright-report` }],
+    ['json', { outputFile: `${runOutputRoot}/playwright-results.json` }],
+    ['junit', { outputFile: `${runOutputRoot}/junit-results.xml` }],
     ['list'],
   ],
 
