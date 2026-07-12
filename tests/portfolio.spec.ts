@@ -29,6 +29,17 @@ async function openNavigationMenu(page: Page) {
 }
 
 test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+  });
+
+  test.afterEach(async ({ page }, testInfo) => {
+    await page.screenshot({
+      path: testInfo.outputPath('final-screenshot.png'),
+      fullPage: true,
+    });
+  });
+
   test('1. Home page smoke test - Verify hero content, navigation, CTAs, and resume link', async ({ page }) => {
     await page.goto(`${BASE_URL}/`);
     await page.waitForLoadState('networkidle');
