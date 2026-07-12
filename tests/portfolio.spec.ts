@@ -11,22 +11,28 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     
     // Wait for page to fully load
     await page.waitForLoadState('networkidle');
+    // Wait for key headings to appear to avoid timing issues
+    await page.waitForSelector('h1');
+    await page.waitForSelector('h2');
     
     // Verify main name text shows "Utkarsh Sinha" as a heading
     const nameHeading = page.locator('h1');
+    await expect(nameHeading).toBeVisible();
     await expect(nameHeading).toContainText('Utkarsh Sinha');
     
     // Verify the role text shows "QA Automation Architect" and "AI-Driven Quality Engineering Leader"
     const roleHeading = page.locator('h2').first();
+    await expect(roleHeading).toBeVisible();
     await expect(roleHeading).toContainText('QA Automation Architect');
     await expect(roleHeading).toContainText('AI-Driven Quality Engineering Leader');
     
     // Verify metrics in the hero section
     const pageContent = page.locator('body');
-    await expect(pageContent).toContainText('18+ years');
-    await expect(pageContent).toContainText('70% automation coverage');
-    await expect(pageContent).toContainText('99.5% production stability');
-    await expect(pageContent).toContainText('20+ engineers mentored');
+    // Use regex to tolerate element splits/whitespace differences
+    await expect(pageContent).toContainText(/18\+\s*years/);
+    await expect(pageContent).toContainText(/70%\s*automation\s*coverage/i);
+    await expect(pageContent).toContainText(/99\.5%\s*production\s*stability/);
+    await expect(pageContent).toContainText(/20\+\s*engineers\s*mentored/);
     
     console.log('✓ Test 1 Passed: Hero content verified');
   });
@@ -37,44 +43,51 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     await page.waitForLoadState('networkidle');
     
     // Test home link
+    await page.waitForSelector('a[href="#home"]');
     await page.click('a[href="#home"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#home`);
+    await page.waitForURL('**/#home');
     
     // Test about link
+    await page.waitForSelector('nav a[href="#about"]');
     await page.click('nav a[href="#about"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#about`);
+    await page.waitForURL('**/#about');
     const aboutSection = page.locator('text=01 · about');
-    await expect(aboutSection).toBeVisible();
+    await aboutSection.waitFor({ state: 'visible' });
     
     // Test experience link
+    await page.waitForSelector('nav a[href="#experience"]');
     await page.click('nav a[href="#experience"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#experience`);
+    await page.waitForURL('**/#experience');
     const experienceSection = page.locator('text=02 · experience');
-    await expect(experienceSection).toBeVisible();
+    await experienceSection.waitFor({ state: 'visible' });
     
     // Test skills link
+    await page.waitForSelector('nav a[href="#skills"]');
     await page.click('nav a[href="#skills"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#skills`);
+    await page.waitForURL('**/#skills');
     const skillsSection = page.locator('text=03 · skills');
-    await expect(skillsSection).toBeVisible();
+    await skillsSection.waitFor({ state: 'visible' });
     
     // Test projects link
+    await page.waitForSelector('nav a[href="#projects"]');
     await page.click('nav a[href="#projects"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#projects`);
+    await page.waitForURL('**/#projects');
     const projectsSection = page.locator('text=04 · projects');
-    await expect(projectsSection).toBeVisible();
+    await projectsSection.waitFor({ state: 'visible' });
     
     // Test education link
+    await page.waitForSelector('a[href="#education"]');
     await page.click('a[href="#education"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#education`);
+    await page.waitForURL('**/#education');
     const educationSection = page.locator('text=05 · education');
-    await expect(educationSection).toBeVisible();
+    await educationSection.waitFor({ state: 'visible' });
     
     // Test contact link
+    await page.waitForSelector('nav a[href="#contact"]');
     await page.click('nav a[href="#contact"]');
-    await expect(page).toHaveURL(`${BASE_URL}/#contact`);
+    await page.waitForURL('**/#contact');
     const contactSection = page.locator('text=06 · contact');
-    await expect(contactSection).toBeVisible();
+    await contactSection.waitFor({ state: 'visible' });
     
     console.log('✓ Test 2 Passed: All navigation links working');
   });
@@ -86,10 +99,11 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     
     // Test "get in touch" button - should navigate to contact section
     const getInTouchBtn = page.locator('a[href="#contact"].btn-primary, button:has-text("get in touch")').first();
+    await getInTouchBtn.waitFor({ state: 'visible' });
     await getInTouchBtn.click();
-    await expect(page).toHaveURL(`${BASE_URL}/#contact`);
+    await page.waitForURL('**/#contact');
     const contactHeading = page.locator('text=Let\'s Build Something Reliable');
-    await expect(contactHeading).toBeVisible();
+    await contactHeading.waitFor({ state: 'visible' });
     
     // Go back to home
     await page.goto(`${BASE_URL}/#home`);
