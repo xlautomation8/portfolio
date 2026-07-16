@@ -11,25 +11,27 @@ async function openNavigationMenu(page: Page) {
   if (await navToggle.isVisible().catch(() => false)) {
     await navToggle.click({ force: true });
     await page.waitForTimeout(300);
-
-    const navMenu = page.locator('header nav#navLinks');
-    const isVisible = await navMenu.evaluate((el) => {
-      const style = window.getComputedStyle(el);
-      return style.display !== 'none' && style.visibility !== 'hidden' && el.getBoundingClientRect().height > 0;
-    }).catch(() => false);
-
-    if (!isVisible) {
-      await page.evaluate(() => {
-        const el = document.getElementById('navLinks');
-        if (el) {
-          el.classList.add('open');
-        }
-      });
-      await page.waitForTimeout(200);
-    }
-
-    await expect(navMenu).toBeAttached();
   }
+
+  const navMenu = page.locator('header nav#navLinks');
+  await expect(navMenu).toBeVisible({ timeout: 10000 });
+
+  const isVisible = await navMenu.evaluate((el) => {
+    const style = window.getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden' && el.getBoundingClientRect().height > 0;
+  }).catch(() => false);
+
+  if (!isVisible) {
+    await page.evaluate(() => {
+      const el = document.getElementById('navLinks');
+      if (el) {
+        el.classList.add('open');
+      }
+    });
+    await page.waitForTimeout(200);
+  }
+
+  await expect(navMenu).toBeAttached();
 }
 
 test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
@@ -45,11 +47,11 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
   });
 
   test('1. Home page smoke test - Verify hero content, navigation, CTAs, and resume link', async ({ page }) => {
-    await page.goto(`${BASE_URL}/`);
-    await page.waitForLoadState('networkidle');
+    await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
 
     const heroSection = page.locator('section#home').first();
-    await expect(heroSection).toBeVisible();
+    await expect(heroSection).toBeVisible({ timeout: 10000 });
 
     const nameHeading = heroSection.locator('h1.hero-name');
     await expect(nameHeading).toBeVisible();
@@ -92,6 +94,8 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
           return style.display !== 'none' && style.visibility !== 'hidden';
         });
       }).toBe(true);
+      await navLink.scrollIntoViewIfNeeded();
+      await expect(navLink).toBeVisible();
       await navLink.click();
       await page.waitForURL(`**/${link.href}`);
       await expect(page.locator(link.sectionId)).toBeVisible();
@@ -110,8 +114,8 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     await expect(page.locator('section#contact')).toBeVisible();
     await expect(page.locator('section#contact .section-title')).toContainText("Let's Build Something Reliable");
 
-    await page.goto(`${BASE_URL}/#home`);
-    await page.waitForLoadState('networkidle');
+    await page.goto(`${BASE_URL}/#home`, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
 
     const viewWorkBtn = page.locator('.hero-cta a[href="#projects"].btn-outline').first();
     await expect(viewWorkBtn).toBeVisible();
@@ -133,8 +137,8 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
   });
 
   test('2. Certificates page link - Verify certificates page navigates and loads', async ({ page }) => {
-    await page.goto(`${BASE_URL}/`);
-    await page.waitForLoadState('networkidle');
+    await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
 
     await openNavigationMenu(page);
     const certificatesLink = page.locator('header nav a.nav-link[href="certificates.html"]').first();
@@ -151,11 +155,11 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
   });
 
   test('3. Contact page smoke test - Verify contact section and all contact links', async ({ page }) => {
-    await page.goto(`${BASE_URL}/#contact`);
-    await page.waitForLoadState('networkidle');
+    await page.goto(`${BASE_URL}/#contact`, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
 
     const contactSection = page.locator('section#contact').first();
-    await expect(contactSection).toBeVisible();
+    await expect(contactSection).toBeVisible({ timeout: 10000 });
     await expect(contactSection.locator('.section-title')).toContainText("Let's Build Something Reliable");
 
     const emailLink = page.locator('.contact-card[href^="mailto:"]').first();
