@@ -4,9 +4,12 @@ setlocal EnableExtensions
 REM Run Playwright tests in headed mode from the repository root.
 cd /d "%~dp0"
 set "SITE_TARGET=local"
+if not defined SLOWMO set "SLOWMO=0"
+if not defined WORKERS set "WORKERS=5"
 
-echo Running Playwright tests in headed mode with SITE_TARGET=%SITE_TARGET%...
-call npx playwright test --headed %* --project=chromium
+echo Running Playwright tests in headed mode with SITE_TARGET=%SITE_TARGET% (SLOWMO=%SLOWMO%ms, WORKERS=%WORKERS%)...
+call npx playwright test  --workers=%WORKERS%  %* 
+REM --project=chromium -g "CV download link"  --headed
 if errorlevel 1 exit /b 1
 
 echo.

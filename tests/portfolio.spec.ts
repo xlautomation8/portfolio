@@ -181,7 +181,7 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     console.log('✓ Test 3 Passed: Contact page links verified');
   });
 
-  test('4. CV download link - Verify PDF download completes with non-zero file size', async ({ page }) => {
+  test('4. CV download link - Verify PDF download completes with non-zero file size', async ({ page }, testInfo) => {
     await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' });
     await page.waitForLoadState('load');
 
@@ -205,8 +205,12 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
       throw new Error('Downloaded file path was not available');
     }
 
-    const fileStats = await fs.stat(downloadPath);
+    const fullPath = testInfo.outputPath(suggestedName);
+    await download.saveAs(fullPath);
+
+    const fileStats = await fs.stat(fullPath);
     expect(fileStats.size).toBeGreaterThan(0);
+    console.log(`Downloaded file full path: ${fullPath} (exists: true, ${fileStats.size} bytes)`);
 
     console.log(`✓ Test 4 Passed: CV download verified (${suggestedName}, ${fileStats.size} bytes)`);
   });
