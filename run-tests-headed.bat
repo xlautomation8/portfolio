@@ -6,7 +6,7 @@ cd /d "%~dp0"
 set "SITE_TARGET=local"
 
 echo Running Playwright tests in headed mode with SITE_TARGET=%SITE_TARGET%...
-call npx playwright test --headed %*
+call npx playwright test --headed %* --project=chromium
 if errorlevel 1 exit /b 1
 
 echo.

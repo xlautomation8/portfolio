@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { promises as fs } from 'fs';
 
 const SITE_TARGET = process.env.SITE_TARGET?.trim().toLowerCase() || 'local';
 const BASE_URL =
@@ -178,5 +179,35 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     await expect(linkedinLink).toHaveAttribute('href', 'https://linkedin.com/in/utkarsh-sinha-automation');
 
     console.log('✓ Test 3 Passed: Contact page links verified');
+  });
+
+  test('4. CV download link - Verify PDF download completes with non-zero file size', async ({ page }) => {
+    await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
+
+    await openNavigationMenu(page);
+
+    const resumeLink = page.locator('header nav a.nav-link[href*="UTKARSH_SINHA"][href$=".pdf"]').first();
+    await expect(resumeLink).toBeAttached();
+    await expect(resumeLink).toHaveAttribute('href', /UTKARSH_SINHA.*\.pdf$/i);
+
+    const downloadPromise = page.waitForEvent('download', { timeout: 15000 });
+    await resumeLink.click();
+
+    const download = await downloadPromise;
+    const suggestedName = download.suggestedFilename();
+    expect(suggestedName.toLowerCase()).toContain('.pdf');
+
+    const downloadPath = await download.path();
+    expect(downloadPath).toBeTruthy();
+
+    if (!downloadPath) {
+      throw new Error('Downloaded file path was not available');
+    }
+
+    const fileStats = await fs.stat(downloadPath);
+    expect(fileStats.size).toBeGreaterThan(0);
+
+    console.log(`✓ Test 4 Passed: CV download verified (${suggestedName}, ${fileStats.size} bytes)`);
   });
 });
