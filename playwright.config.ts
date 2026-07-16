@@ -81,8 +81,9 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 
-  /* Global timeout */
-  timeout: 30 * 1000,
+  /* Global timeout (generous because headless: false means real browser
+     windows launch under parallel worker contention, which can be slow) */
+  timeout: 60 * 1000,
   
   /* Expect timeout */
   expect: {

@@ -1,6 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const BASE_URL = 'https://utkarsh.site';
+const SITE_TARGET = process.env.SITE_TARGET?.trim().toLowerCase() || 'local';
+const BASE_URL =
+  SITE_TARGET === 'utkarsh.site' || SITE_TARGET === 'prod' || SITE_TARGET === 'remote'
+    ? 'https://utkarsh.site'
+    : 'http://localhost:8080';
 
 async function openNavigationMenu(page: Page) {
   const navToggle = page.locator('#navToggle');
