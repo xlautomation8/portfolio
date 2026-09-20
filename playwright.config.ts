@@ -37,7 +37,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://utkarsh.site',
+    baseURL: 'https://aiquality.in',
 
     /* Slow down each action by SLOWMO ms (set via env var) so headed runs are watchable. */
     launchOptions: {

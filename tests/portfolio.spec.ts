@@ -3,8 +3,8 @@ import { promises as fs } from 'fs';
 
 const SITE_TARGET = process.env.SITE_TARGET?.trim().toLowerCase() || 'local';
 const BASE_URL =
-  SITE_TARGET === 'utkarsh.site' || SITE_TARGET === 'prod' || SITE_TARGET === 'remote'
-    ? 'https://utkarsh.site'
+  SITE_TARGET === 'aiquality.in' || SITE_TARGET === 'prod' || SITE_TARGET === 'remote'
+    ? 'https://aiquality.in'
     : 'http://localhost:8080';
 
 async function openNavigationMenu(page: Page) {

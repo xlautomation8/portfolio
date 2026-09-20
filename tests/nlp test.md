@@ -3,7 +3,7 @@ Action steps
 
 Open a web browser.
 
-Navigate to https://utkarsh.site/
+Navigate to https://aiquality.in/
 
 Wait until the page fully loads and the hero section is visible at the top.
 
@@ -16,7 +16,7 @@ Locate the metrics in the hero section and confirm they display: “18+ years ex
 2. Top navigation anchor behavior
 Action steps
 
-Ensure https://utkarsh.site/ is open in the browser.
+Ensure https://aiquality.in/ is open in the browser.
 
 In the top navigation bar, click “home” (or the utkarsh link) and verify the view is at the top hero section.
 
@@ -54,11 +54,11 @@ Verify the page scrolls to the “Selected Work” projects section (04 · proje
 4. Certificates page link
 Action steps
 
-With https://utkarsh.site/ open, locate the “view certificates” link in the top navigation/header area.
+With https://aiquality.in/ open, locate the “view certificates” link in the top navigation/header area.
 
 Click the “view certificates” link.
 
-Observe that the browser navigates to https://utkarsh.site/certificates.html.
+Observe that the browser navigates to https://aiquality.in/certificates.html.
 
 Verify that the new page loads successfully (no 404 or error page) and shows certificate-related content.
 
@@ -69,7 +69,7 @@ On the main page, locate the “get resume” link in the header area or the “
 
 Click the “get resume” or “download CV” link.
 
-Verify the browser opens or downloads the file from https://utkarsh.site/assets/UTKARSH_SINHA_18Years_Automation_AI_Expert.pdf.
+Verify the browser opens or downloads the file from https://aiquality.in/assets/UTKARSH_SINHA_18Years_Automation_AI_Expert.pdf.
 
 Confirm there is no error message and the PDF content is accessible (e.g., visible in a PDF viewer).
 

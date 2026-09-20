@@ -92,7 +92,7 @@ Contains 8 automated test cases covering:
 ### Playwright Config: `playwright.config.ts`
 
 Settings:
-- **Base URL:** https://utkarsh.site
+- **Base URL:** https://aiquality.in
 - **Browsers:** Chromium, Firefox, WebKit, Mobile Chrome, Mobile Safari
 - **Reporters:** HTML, JSON, JUnit XML
 - **Screenshots:** Only on failure
