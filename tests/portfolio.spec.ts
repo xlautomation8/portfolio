@@ -165,8 +165,8 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
 
     const emailLink = page.locator('.contact-card[href^="mailto:"]').first();
     await expect(emailLink).toBeVisible();
-    await expect(emailLink).toContainText('xlautomation8@gmail.com');
-    await expect(emailLink).toHaveAttribute('href', 'mailto:xlautomation8@gmail.com');
+    await expect(emailLink).toContainText('utkarsh.sinha.tech@gmail.com');
+    await expect(emailLink).toHaveAttribute('href', 'mailto:utkarsh.sinha.tech@gmail.com');
 
     const phoneLink = page.locator('.contact-card[href^="tel:"]').first();
     await expect(phoneLink).toBeVisible();

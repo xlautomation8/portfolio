@@ -3,7 +3,7 @@ setlocal EnableExtensions
 
 REM Run Playwright tests in headed mode from the repository root.
 cd /d "%~dp0"
-set "SITE_TARGET=local"
+set "SITE_TARGET=remote"
 if not defined SLOWMO set "SLOWMO=0"
 if not defined WORKERS set "WORKERS=5"
 
