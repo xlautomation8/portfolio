@@ -130,9 +130,9 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
     await expect(certificatesLink).toContainText('view certificates');
 
     await openNavigationMenu(page);
-    const resumeLink = page.locator('header nav a.nav-link[href*="UTKARSH"][href$=".pdf"]').first();
+    const resumeLink = page.locator('header nav a.nav-link[href*="UTKARSH_SINHA"][href$=".pdf"]').first();
     await expect(resumeLink).toBeAttached();
-    await expect(resumeLink).toHaveAttribute('href', /UTKARSH[\s_]SINHA.*\.pdf$/i);
+    await expect(resumeLink).toHaveAttribute('href', /UTKARSH_SINHA.*\.pdf$/i);
 
     console.log('✓ Test 1 Passed: Home page smoke test verified');
   });
@@ -187,9 +187,9 @@ test.describe('Utkarsh Sinha Portfolio Website - Full Test Suite', () => {
 
     await openNavigationMenu(page);
 
-    const resumeLink = page.locator('header nav a.nav-link[href*="UTKARSH"][href$=".pdf"]').first();
+    const resumeLink = page.locator('header nav a.nav-link[href*="UTKARSH_SINHA"][href$=".pdf"]').first();
     await expect(resumeLink).toBeAttached();
-    await expect(resumeLink).toHaveAttribute('href', /UTKARSH[\s_]SINHA.*\.pdf$/i);
+    await expect(resumeLink).toHaveAttribute('href', /UTKARSH_SINHA.*\.pdf$/i);
 
     const downloadPromise = page.waitForEvent('download', { timeout: 15000 });
     await resumeLink.click();
