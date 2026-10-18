@@ -11,7 +11,9 @@ An exact search for `"aiquality.in"` returns no pages from the site. `robots.txt
 - [x] Add `sitemap.xml`
 - [x] Add `<link rel="canonical">` to every page
 - [x] Add a custom `404.html`
-- [ ] Register in Google Search Console and Bing Webmaster Tools; submit the sitemap
+- [x] Submit URLs to Bing/IndexNow (key file `da9cf99a18684365be085cc63a65a99d.txt`, submitted 2026-10-18; keep the key file deployed)
+- [ ] Register in Google Search Console (DNS TXT verification); submit `https://aiquality.in/sitemap.xml`
+- [ ] Register in Bing Webmaster Tools (import from Search Console)
 
 ## 2. Add social preview tags (for LinkedIn and WhatsApp shares)
 There are no Open Graph or Twitter card tags, so shared links show a plain, unbranded preview.

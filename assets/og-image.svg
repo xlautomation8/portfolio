@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="title desc">
+  <title id="title">Utkarsh Sinha | AI Quality</title>
+  <desc id="desc">QA Automation Architect and AI-Driven Quality Engineering Leader profile preview.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e14"/>
+      <stop offset="100%" stop-color="#101820"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="100%" stop-color="#39d353"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect x="54" y="54" width="1092" height="519" rx="28" fill="#0d141b" stroke="#1d2a35"/>
+  <text x="84" y="185" fill="#39d353" font-family="'JetBrains Mono', monospace" font-size="26" letter-spacing="2">$ whoami</text>
+  <text x="84" y="300" fill="#f2f5f7" font-family="'Segoe UI', sans-serif" font-size="74" font-weight="700">Utkarsh Sinha</text>
+  <text x="84" y="370" fill="#9bb0c5" font-family="'JetBrains Mono', monospace" font-size="28">QA Automation Architect</text>
+  <text x="84" y="420" fill="#9bb0c5" font-family="'JetBrains Mono', monospace" font-size="28">AI-Driven Quality Engineering Leader</text>
+  <rect x="84" y="455" width="320" height="64" rx="14" fill="url(#accent)"/>
+  <text x="117" y="497" fill="#071018" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="700">AI Quality</text>
+  <g transform="translate(890 140)">
+    <circle cx="120" cy="120" r="110" fill="#101820" stroke="#58a6ff" stroke-width="4"/>
+    <circle cx="120" cy="120" r="92" fill="#121d29"/>
+    <text x="120" y="146" text-anchor="middle" fill="#58a6ff" font-family="'JetBrains Mono', monospace" font-size="96" font-weight="700">U</text>
+  </g>
+</svg>
