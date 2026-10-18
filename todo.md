@@ -7,10 +7,10 @@ Quick wins: items 1–5 and 9 (~1 day, no redesign). Differentiators: items 6–
 An exact search for `"aiquality.in"` returns no pages from the site. `robots.txt`, `sitemap.xml` and unknown paths all return GitHub's default 404.
 "aiquality" also competes with Indian "air quality" searches and an unrelated product, AIQualityHQ. Target "Utkarsh Sinha" plus specific phrases.
 
-- [ ] Add `robots.txt`
-- [ ] Add `sitemap.xml`
-- [ ] Add `<link rel="canonical">` to every page
-- [ ] Add a custom `404.html`
+- [x] Add `robots.txt`
+- [x] Add `sitemap.xml`
+- [x] Add `<link rel="canonical">` to every page
+- [x] Add a custom `404.html`
 - [ ] Register in Google Search Console and Bing Webmaster Tools; submit the sitemap
 
 ## 2. Add social preview tags (for LinkedIn and WhatsApp shares)
