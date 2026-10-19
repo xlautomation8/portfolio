@@ -1,19 +1,4 @@
-// ---- Typing effect for hero name ----
-const typedNameEl = document.getElementById('typedName');
-const fullName = 'Utkarsh Sinha';
-let charIndex = 0;
-
-function typeName(){
-  if (!typedNameEl) return;
-  if (charIndex <= fullName.length){
-    typedNameEl.textContent = fullName.slice(0, charIndex) + (charIndex < fullName.length ? '▌' : '');
-    charIndex++;
-    setTimeout(typeName, 90);
-  } else {
-    typedNameEl.textContent = fullName;
-  }
-}
-typeName();
+// Hero name typing effect is CSS-only (.hero-name .typed in style.css) so the <h1> text stays static.
 
 // ---- Mobile nav toggle ----
 const navToggle = document.getElementById('navToggle');

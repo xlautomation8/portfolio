@@ -30,17 +30,18 @@ There are no Open Graph or Twitter card tags, so shared links show a plain, unbr
 ## 4. Fix the empty `<h1>`
 `index.html:46` ships an empty `<h1>` that `script.js` types the name into, so crawlers and no-JS visitors see no heading. Screen readers may announce partial text like "U▌", "Ut▌".
 
-- [ ] Put "Utkarsh Sinha" directly in the HTML
-- [ ] Run the typing effect on a separate decorative `aria-hidden` span
-- [ ] Add `prefers-reduced-motion` handling for the typing effect and blinking cursor (none exists in `style.css`)
+- [x] Put "Utkarsh Sinha" directly in the HTML
+- [x] Typing effect moved to a CSS-only clip-path reveal (text stays static; no JS rewriting the heading)
+- [x] Add `prefers-reduced-motion` handling (typing reveal, blinking cursor, smooth scroll, transitions)
 
 ## 5. Make the numbers agree
-- [ ] Regression-cycle reduction: 60% (`index.html:115`) vs 40% (`index.html:100`, `index.html:160`). Pick one.
-- [ ] Engineers mentored: 20+ (hero/About) vs 15+ (`index.html:162`). Pick one.
-- [ ] "70%" is used for both automation coverage and the cut in manual test-design effort. Make sure each is accurate and clearly labelled.
-- [ ] `etl_framework.groovy` is described as a Spring Boot + JUnit (Java) framework. Fix the filename or the description.
-- [ ] `qa_agent.js`: confirm the language matches the real implementation (LangGraph is commonly Python)
-- [ ] Remove the 10+2 entry; add years to the B.E.
+- [x] Regression-cycle reduction: standardised on 40% on the site. **Résumé PDF still says 60% in its sidebar; fix it there too.**
+- [x] Engineers mentored: 20+ = whole career, 15+ = Fidelity only (both now labelled)
+- [x] "70%": kept both. They are separate, clearly labelled metrics and match the résumé.
+- [x] `etl_framework.groovy` → `etl_framework.java`
+- [x] `qa_agent.js` → `qa_agent.py` (LiteLLM is a Python library)
+- [x] Removed the 10+2 entry
+- [ ] Add graduation year to the B.E. (not in the résumé; needs your input)
 
 ## 6. Build the "AI Quality" brand the domain promises
 The title, logo (`~/utkarsh`) and headline never say "AI Quality".
